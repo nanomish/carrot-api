@@ -8,7 +8,8 @@ router.get('/', function (req, res) {
   });
 });
 
-var contactController = require('./app/contact/contact.controller');
+const contactController = require('./app/contact/contact.controller');
+const loginController = require('./app/login/login.controller');
 // Contact routes
 router.route('/contacts')
   .get(contactController.index)
@@ -19,5 +20,8 @@ router.route('/contacts/:contact_id')
   .patch(contactController.update)
   .put(contactController.update)
   .delete(contactController.delete);
+
+router.route('/login')
+  .post(contactController.login)
 
 module.exports = router;

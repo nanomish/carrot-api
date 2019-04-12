@@ -86,3 +86,28 @@ exports.delete = function (req, res) {
     }
   });
 };
+
+// Handle login
+exports.login = function (req, res) {
+  Contact.findOne({email: req.body.email, password: req.body.password}, function (err, contact) {
+    if (err) {
+      res.json({
+        status: "error",
+        message: err,
+      });
+    }
+    else if (contact && contact.token) {
+      res.json({
+        status: "success",
+        message: "Contacts retrieved successfully",
+        data: contact.token
+      });
+    }
+    else {
+      res.json({
+        status: 'failure',
+        message: 'Failed to login!'
+      })
+    }
+  });
+};

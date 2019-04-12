@@ -20,6 +20,7 @@ var contactSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  token: String,
   tokens: [
     {
       token: String,
