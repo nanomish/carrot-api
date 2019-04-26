@@ -91,20 +91,23 @@ exports.delete = function (req, res) {
 exports.login = function (req, res) {
   Contact.findOne({email: req.body.email, password: req.body.password}, function (err, contact) {
     if (err) {
-      res.json({
+      res.status(400).json({
         status: "error",
         message: err,
       });
     }
     else if (contact && contact.token) {
-      res.json({
+      res.status(200).json({
         status: "success",
         message: "Contacts retrieved successfully",
-        data: contact.token
+        data: {
+          token: contact.token,
+          email: contact.email,
+        }
       });
     }
     else {
-      res.json({
+      res.status(404).json({
         status: 'failure',
         message: 'Failed to login!'
       })
