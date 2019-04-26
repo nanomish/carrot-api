@@ -9,7 +9,7 @@ var listSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  items: [{ type : ObjectId, ref: 'Item' }],
+  items: [{type: ObjectId, ref: 'Item'}],
   shared_with: [{type: ObjectId, ref: 'Contact'}],
   owner: ObjectId,
 });

@@ -23,17 +23,17 @@ exports.new = function (req, res) {
   contact.email = req.body.email;
   contact.phone = req.body.phone;
   contact.password = req.body.password;
-// save the contact and check for errors
+  // save the contact and check for errors
   contact.save(function (err) {
-     if (err) {
-       res.json(err);
-     }
-     else {
-       res.json({
-         message: 'New contact created!',
-         data: contact
-       });
-     }
+    if (err) {
+      res.json(err);
+    }
+    else {
+      res.json({
+        message: 'New contact created!',
+        data: contact
+      });
+    }
   });
 };
 // Handle view contact info
@@ -58,7 +58,7 @@ exports.update = function (req, res) {
     contact.gender = req.body.gender;
     contact.email = req.body.email;
     contact.phone = req.body.phone;
-// save the contact and check for errors
+    // save the contact and check for errors
     contact.save(function (err) {
       if (err) {
         res.json(err);
