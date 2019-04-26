@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
 });
 
 const contactController = require('./app/contact/contact.controller');
-const loginController = require('./app/login/login.controller');
+const listController = require('./app/list/list.controller');
 // Contact routes
 router.route('/contacts')
   .get(contactController.index)
@@ -22,6 +22,9 @@ router.route('/contacts/:contact_id')
   .delete(contactController.delete);
 
 router.route('/login')
-  .post(contactController.login)
+  .post(contactController.login);
+
+router.route('/lists')
+  .get(listController.getAll)
 
 module.exports = router;
